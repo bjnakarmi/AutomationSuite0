@@ -10,3 +10,17 @@ def get_all_trainings(headers):
     }
     response = requests.get(CONFIG['api_base'] + endpoint, params=params, headers=headers )
     return response
+
+
+def get_all_suppliers(header):
+    endpoint = '/api/company/getAll'
+    params = {
+        'countryId' : 5,
+        'page' : 1,
+        'isActive' : True,
+        'limit' : 10,
+        'offset' : 0
+
+    }
+    response = requests.get(url = CONFIG['api_base'] + endpoint,params= params, headers=header)
+    return response
