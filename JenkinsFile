@@ -1,0 +1,38 @@
+pipeline{
+	agent any
+
+	stages{
+		stage('Clone from Github'){
+
+			steps{
+				git 'https://github.com/bjnakarmi/AutomationSuite0.git'
+
+			}
+		}
+
+		stage('Install Dependencies'){
+
+			steps{
+				sh 'pip install -r requirements.txt'
+			
+			}
+		}
+		stage('Run Tests'){
+
+			steps{
+
+				sh 'pytest tests/  --html=report.html'
+			}
+		}
+
+		stage('Archive Report'){
+
+			steps{
+				
+				archiveArtifacts artifacts : 'report.html', fingerprint : true
+			}
+
+		}
+
+
+}
