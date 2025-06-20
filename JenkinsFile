@@ -5,7 +5,8 @@ pipeline{
 		stage('Clone from Github'){
 
 			steps{
-				git 'https://github.com/bjnakarmi/AutomationSuite0.git'
+				git branch : 'main',
+				url : 'https://github.com/bjnakarmi/AutomationSuite0.git'
 
 			}
 		}
